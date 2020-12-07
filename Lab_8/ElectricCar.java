@@ -1,12 +1,13 @@
 package ua.kpi.fict.acts.it03;
 
+import java.util.Objects;
+
 public class ElectricCar extends Car {
 
     protected String model;
     protected double batteryCapacity;
     protected double energyPerKilometer;
     protected double batteryCharge = 0;
-    protected double mileage;
     private Idrive driveMode;
 
 
@@ -17,12 +18,6 @@ public class ElectricCar extends Car {
         this.batteryCapacity = batteryCapacity;
         this.energyPerKilometer = energyPerKilometer;
         this.driveMode = driveMode;
-
-    }
-
-    public void resetMileage()
-    {
-        mileage = 0;
     }
 
     public void chargeBattery()
@@ -88,10 +83,6 @@ public class ElectricCar extends Car {
         return batteryCharge;
     }
 
-    public double getMileage()
-    {
-        return mileage;
-    }
 
     public void setDriveMode(Idrive driveMode)
     {
@@ -112,5 +103,19 @@ public class ElectricCar extends Car {
         return "Car(" +"model= " + model + ", weight= " + weight + ", color= " + color  + ", batteryCharge= " + batteryCharge +'/' + batteryCapacity + ", mileage= "+ mileage + ", energyPerKilometer = "+ energyPerKilometer +')';
     }
 
-
+    @Override
+    public boolean equals(Object o)
+    {
+        if( o == this) return true;
+        if(!(o instanceof ElectricCar)) return false;
+        ElectricCar that = (ElectricCar) o;
+        if(this.batteryCharge == that.getBatteryCharge() &&
+                this.mileage == that.getMileage() &&
+                this.model == that.getModel() &&
+                this.batteryCapacity == that.getBatteryCapacity() &&
+                this.energyPerKilometer == that.getEnergyPerKilometer() &&
+                this.weight == that.getWeight() &&
+                this.color == that.getColor()) return true;
+        else return false;
+    }
 }
