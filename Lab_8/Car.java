@@ -4,6 +4,7 @@ public abstract class Car {
 
     protected double weight;
     protected String color;
+    protected double mileage=0;
 
     public Car( double weight, String color)
     {
@@ -15,7 +16,7 @@ public abstract class Car {
 
     public void doIgnition()
     {
-        System.out.println("Машина завелась зо звуком: " + this.ignitionSound());
+        System.out.println("Машина завелась cо звуком: " + this.ignitionSound());
     }
 
     public void setWeight(double weight)
@@ -38,9 +39,21 @@ public abstract class Car {
         return color;
     }
 
+    public void resetMileage()
+    {
+        mileage = 0;
+    }
+
+    public double getMileage()
+    {
+        return mileage;
+    }
+
+
+    @Override
     public String toString()
     {
-        return "Car(" + "weight= " + weight + ", color= " + color + ')';
+        return "Car(" + "weight= " + weight + ", color= " + color +", mileage=  "+ mileage +')';
     }
 
 }

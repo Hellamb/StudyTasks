@@ -3,7 +3,6 @@ package ua.kpi.fict.acts.it03;
 public class CarOnInternalCombustionEngine extends Car {
 
     protected double fuelAmount = 0;
-    protected double mileage = 0;
     protected String model;
     protected double fuelTankVolume;
     protected double fuelPerKilometer;
@@ -24,10 +23,6 @@ public class CarOnInternalCombustionEngine extends Car {
         return "Wruhm-wruhm";
     }
 
-    public void resetMileage()
-    {
-        mileage = 0;
-    }
 
     public void fillFuelTank()
     {
@@ -65,11 +60,6 @@ public class CarOnInternalCombustionEngine extends Car {
         this.fuelAmount = 0;
     }
 
-    public double getMileage()
-    {
-        return mileage;
-    }
-
     public double getFuelAmount()
     {
         return fuelAmount;
@@ -94,5 +84,20 @@ public class CarOnInternalCombustionEngine extends Car {
     public String toString()
     {
         return "Car(" +"model= " + model + ", weight= " + weight + ", color= " + color  + ", fuel= " + fuelAmount +'/' + fuelTankVolume + ", mileage= "+ mileage + ", fuelPerKilometer = "+ fuelPerKilometer +')';
+    }
+    @Override
+    public boolean equals(Object o)
+    {
+        if( o == this) return true;
+        if(!(o instanceof CarOnInternalCombustionEngine)) return false;
+        CarOnInternalCombustionEngine other = (CarOnInternalCombustionEngine) o;
+        if(this.fuelAmount == other.getFuelAmount() &&
+                this.mileage == other.getMileage() &&
+                this.model == other.getModel() &&
+                this.fuelTankVolume == other.getFuelTankVolume() &&
+                this.fuelPerKilometer == other.getFuelPerKilometer() &&
+                this.weight == other.getWeight() &&
+                this.color == other.getColor()) return true;
+        else return false;
     }
 }
