@@ -11,7 +11,16 @@ public class DataProcessor {
     }
     public void process(float[] array)
     {
-        sorter.sort(array);
-        printer.print(array);
+        try {
+            if (array == null) {
+                throw new IllegalArgumentException("Error!Неверное значение аргумента! ");
+            }
+            sorter.sort(array);
+            printer.print(array);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 }
